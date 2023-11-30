@@ -1,5 +1,5 @@
 // AuthProvider.js
-import { useContext, createContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect } from 'react';
 import { authProvider } from '../firebase/firebaseAuth';
 
 export const AuthContext = createContext();
@@ -22,6 +22,34 @@ const AuthProvider = ({ children }) => {
     }
   };
 
+  const registerPaciente = async (nombre, apellido) => {
+    try {
+      const currentUser = authProvider.getCurrentUser();
+      const token = await currentUser.getIdToken();
+
+      const response = await fetch('https://clinica-ced-server2.onrender.com/api/registrar_paciente', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          nombre,
+          apellido,
+        }),
+      });
+
+      if (response.ok) {
+        console.log('Paciente registrado exitosamente');
+      } else {
+        const errorData = await response.json();
+        console.error('Error al registrar paciente:', errorData.message);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
   const contextValue = {
     user,
     setUser,
@@ -29,6 +57,7 @@ const AuthProvider = ({ children }) => {
       return JSON.parse(localStorage.getItem('user') || null) || logged;
     },
     changePassword,
+    registerPaciente,
   };
 
   return <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>;

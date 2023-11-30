@@ -3,9 +3,9 @@ import "./odontogram.css";
 
 function Odontogram(props) {
   return (
-    <div className="bg-blue-800">
-      <div className="pt-5">
-        <p className="font-semibold text-2xl text-white"> ODONTROGRAMA </p>
+    <div>
+      <div className="pt-9">
+        <p className="font-semibold text-2xl text-BLACK"> ODONTROGRAMA </p>
       </div>
       <div id="root" className="odontogram-graph p-10 flex justify-between">
         <div>

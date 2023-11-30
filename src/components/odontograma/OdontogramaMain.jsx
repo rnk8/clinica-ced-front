@@ -2,12 +2,11 @@ import { useState } from "react";
 import Odontogram from "./odontogram";
 
 function OdontogramaMain() {
-    const [data, setData] = useState([]);
+  const [data, setData] = useState([]);
 
-
-    return(
-        <div className="App" style={{ backgroundColor: "blue" }}>
-        <Odontogram
+  return (
+    <div className="App">
+      <Odontogram
         tooth={(labelT, zoneT, idT) => {
           setData((oldArray) => [
             ...oldArray,
@@ -20,19 +19,17 @@ function OdontogramaMain() {
         }}
         rtooth={(id) => {
           setData((current) =>
-              current.filter((obj) => {
-                return obj.id !== id;
-              })
-            );
+            current.filter((obj) => {
+              return obj.id !== id;
+            })
+          );
         }}
-        />
-        <div style={{padding: "1rem", display: "flex", justifyContent: "center"}}>
-          <button
-          
+      />
+      <div style={{ padding: "1rem", display: "flex", justifyContent: "center" }}>
+        <button
           onClick={() => {
-            console.log(data)
+            console.log(data);
           }}
-  
           style={{
             backgroundColor: "#FF6363",
             border: "4px solid #543864",
@@ -41,13 +38,14 @@ function OdontogramaMain() {
             padding: "0.5rem",
             color: "#f1f1f1",
             fontSize: 18,
-            cursor: "pointer"
+            cursor: "pointer",
           }}
-  
-          >Click for save data (Console.log)</button>
-        </div>
+        >
+          Click for save data (Console.log)
+        </button>
       </div>
-    );
+    </div>
+  );
 }
 
 export default OdontogramaMain;

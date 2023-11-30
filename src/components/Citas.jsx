@@ -171,7 +171,7 @@ function DentalAppointmentForm() {
                 <tbody className="bg-white divide-y divide-gray-200">
                   {citasDelPaciente.map((appointment) => (
                     <tr key={appointment.id}>
-                      <td className="px-6 py-4 whitespace-nowrap">{appointment.fecha}</td>
+                      <td className="pxe-6 py-4 whitespace-nowrap">{appointment.fecha}</td>
                       <td className="px-6 py-4 whitespace-nowrap">{appointment.hora}</td>
                       <td className="px-6 py-4 whitespace-nowrap">{appointment.nota}</td>
                       <td className="px-6 py-4 whitespace-nowrap">{appointment.PacienteId}</td>
@@ -191,3 +191,4 @@ function DentalAppointmentForm() {
 }
 
 export default DentalAppointmentForm;
+

@@ -48,26 +48,26 @@ const Sidebar = () => {
           >
             <RiHome3Line /> Inicio
           </Link>
-
-            <a
-              href="#"
-              className="flex items-center gap-4 text-white py-2 px-4 rounded-xl hover:bg-primary-900/50 transition-colors"
-            >
-              <RiFileCopyLine /> Reservas
-            </a>
+          <Link
+            to="/PatientList"
+            className="flex items-center gap-4 text-white py-2 px-4 rounded-xl hover:bg-primary-900/50 transition-colors"
+          >
+            <RiWalletLine /> Gestionar Odontograma
+          </Link>
+           
             <Link
               to="/perfil"
               className="flex items-center gap-4 text-white py-2 px-4 rounded-xl hover:bg-primary-900/50 transition-colors"
             >
               <RiWalletLine /> Perfil
             </Link>
-
-            <Link
-            to="/citas"
-            className="flex items-center gap-4 text-white py-2 px-4 rounded-xl hover:bg-primary-900/50 transition-colors"
-          >
-            <RiWalletLine /> Gestionar Cita
-          </Link>
+            <a
+              href="#"
+              className="flex items-center gap-4 text-white py-2 px-4 rounded-xl hover:bg-primary-900/50 transition-colors"
+            >
+              <RiFileCopyLine /> Reservas
+            </a>
+         
 
             <a
               href="#"
@@ -76,11 +76,11 @@ const Sidebar = () => {
               <RiPieChartLine /> Reportes
             </a>
             <Link
-              t o="/lista"
-              className="flex items-center gap-4 text-white py-2 px-4 rounded-xl hover:bg-primary-900/50 transition-colors"
-            >
-              <RiPictureInPictureLine /> Registrar Paciente
-            </Link>
+            to="/Registrar"
+            className="flex items-center gap-4 text-white py-2 px-4 rounded-xl hover:bg-primary-900/50 transition-colors"
+          >
+            <RiPictureInPictureLine /> Registrar Paciente
+          </Link>
             <button
               onClick={() => authProvider.logOut()}
               className="flex items-center gap-4 text-white py-2 px-4 rounded-xl hover:bg-primary-900/50 transition-colors"
