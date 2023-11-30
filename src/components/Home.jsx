@@ -1,6 +1,8 @@
 import React from 'react'
 import Header from './Header';
 import Sidebar from './Sidebar';
+import { Link } from 'react-router-dom';
+
 // Icons
 import { RiLineChartLine, RiHashtag } from "react-icons/ri";
 
@@ -17,15 +19,18 @@ const Home = () => {
           <div className="bg-primary-100 p-8 rounded-xl text-gray-300 flex flex-col gap-6">
             <RiLineChartLine className="text-5xl" />
             <h4 className="text-2xl"></h4>
-            <button
-  className="text-3xl text-white bg-transparent border-none cursor-pointer"
-  onClick={() => {
-    // Lógica para gestionar el odontograma al hacer clic
-    console.log('Gestionar Odontograma clicado');
-  }}
->
-  Gestionar Odontograma 🦷 
-</button>
+            <Link to="/PatientList">
+  <button
+    className="text-3xl text-white bg-transparent border-none cursor-pointer"
+    onClick={() => {
+      // Lógica para gestionar el odontograma al hacer clic
+      console.log('Gestionar Odontograma clicado');
+    }}
+  >
+    Gestionar Odontograma 🦷 
+  </button>
+</Link>
+
 <span className="py-1 px-3 bg-primary-300/80 rounded-full">
   Ver citas
 </span>

@@ -70,6 +70,9 @@ const PatientList = ({ onSelectPatient }) => {
             </p>
           )}
 
+          {/* Botón para gestionar odontograma */}
+       
+
           <div>
             <h2 className="text-xl font-semibold mb-4">Lista de Pacientes</h2>
             <ul className="space-y-2">

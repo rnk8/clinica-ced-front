@@ -11,7 +11,8 @@ import PrivateRoute from './PrivateRoute';
 import Listapaciente from '../components/Listapaciente'
 import Odontogramapage from '../pages/Odontograma/Odontogramapage';
 import RegistrarPaciente from '../components/RegistrarPaciente'
-
+import GestionarOdontologo from '../components/GestionarOdontologo';
+import UserCard from '../components/UserCard';
 const PublicRoutes = () => {
   const UseAuth = useAuth();
   return (
@@ -28,6 +29,8 @@ const PublicRoutes = () => {
           <Route path="/PatientList" element={<Listapaciente/>} />
           <Route path="/odontograma/:id" element={<Odontogramapage />} />
           <Route path="/Registrar" element={<RegistrarPaciente/>} />
+          <Route path="/RegistrarOdontologo" element={<GestionarOdontologo/>} />
+          <Route path="/carduser" element={<UserCard/>} />
         </Routes>
       </BrowserRouter>
     </>

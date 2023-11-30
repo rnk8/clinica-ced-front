@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import useAuth from "../auth/useAuth";
+import { Link } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import Header from "./Header";
 import axios from "axios";
@@ -85,16 +86,30 @@ const RegisterPatient = () => {
         </form>
 
         {/* Lista de Pacientes */}
+<div>
+  <h2 className="text-xl font-semibold mb-4">Lista de Pacientes</h2>
+  <ul className="space-y-2">
+    {pacientes.map((patient) => (
+      <li key={patient.id} className="flex items-center justify-between cursor-pointer hover:bg-gray-200 p-2 rounded">
         <div>
-          <h2 className="text-xl font-semibold mb-4">Lista de Pacientes</h2>
-          <ul className="space-y-2">
-            {pacientes.map((patient) => (
-              <li key={patient.id} className="cursor-pointer hover:bg-gray-200 p-2 rounded">
-                {`${patient.nombre} ${patient.apellido}`}
-              </li>
-            ))}
-          </ul>
+          {`${patient.nombre} ${patient.apellido}`}
         </div>
+        <Link to="/carduser">
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            console.log("Botón clicado");
+          }}
+          className="bg-blue-500 hover:bg-blue-800 text-white font-bold py-1 px-2 rounded shadow-md"
+        >
+          <i className="fas fa-edit"></i> Gestionar Odontograma
+        </button>
+        </Link>
+      </li>
+    ))}
+  </ul>
+</div>
+
       </main>
     </div>
   );
