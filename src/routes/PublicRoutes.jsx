@@ -30,7 +30,7 @@ const PublicRoutes = () => {
           <Route path="/odontograma/:id" element={<Odontogramapage />} />
           <Route path="/Registrar" element={<RegistrarPaciente/>} />
           <Route path="/RegistrarOdontologo" element={<GestionarOdontologo/>} />
-          <Route path="/carduser" element={<UserCard/>} />
+          <Route path="/carduser/:id" element={<UserCard/>} />
         </Routes>
       </BrowserRouter>
     </>

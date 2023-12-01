@@ -94,7 +94,7 @@ const RegisterPatient = () => {
         <div>
           {`${patient.nombre} ${patient.apellido}`}
         </div>
-        <Link to="/carduser">
+        <Link to= {`/carduser/${patient.id}`} >
         <button
           onClick={(e) => {
             e.stopPropagation();
