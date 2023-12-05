@@ -48,24 +48,17 @@ function Odontogram(props) {
         </div>
         <div className="bg-blue-400 w-1/3 rounded-lg">
           <select className="w-full p-2 rounded-lg font-medium">
-            <option selected value="">
-              {" "}
-              Seleccione un tratamiento
-            </option>
-            <select>
-  <option value="">Seleccione un tratamiento</option>
-  <option value="limpieza">Limpieza dental</option>
-  <option value="relleno">Relleno dental</option>
-  <option value="extraccion">Extracción dental</option>
-  <option value="corona">Corona dental</option>
-  <option value="implante">Implante dental</option>
-  <option value="ortodoncia">Ortodoncia</option>
-  <option value="blanqueamiento">Blanqueamiento dental</option>
-  <option value="endodoncia">Endodoncia</option>
-  <option value="prótesis">Prótesis dental</option>
-  <option value="selladores">Selladores dentales</option>
-</select>
-
+            <option value="">Seleccione un tratamiento</option>
+            <option value="limpieza">Limpieza dental</option>
+            <option value="relleno">Relleno dental</option>
+            <option value="extraccion">Extracción dental</option>
+            <option value="corona">Corona dental</option>
+            <option value="implante">Implante dental</option>
+            <option value="ortodoncia">Ortodoncia</option>
+            <option value="blanqueamiento">Blanqueamiento dental</option>
+            <option value="endodoncia">Endodoncia</option>
+            <option value="prótesis">Prótesis dental</option>
+            <option value="selladores">Selladores dentales</option>
           </select>
         </div>
       </div>
