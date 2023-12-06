@@ -4,6 +4,8 @@ import Header from "./Header";
 import Sidebar from "./Sidebar";
 import { useLocation } from "react-router-dom";
 import CardOdontograma from "./CardOdontograma";
+import Button from "react-bootstrap/Button";
+import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
 
 const OdontogramaPage = () => {
   const [detallesOdontograma, setDetallesOdontograma] = useState([]);
