@@ -119,6 +119,12 @@ const CardOdontograma = ({ detalle }) => {
                                 <Text>En tratamiento </Text>
                               </span>
                             </p>
+                            <p className="font-medium">
+                              <Text> Tratamiento: </Text>
+                              <span className="font-normal">
+                                <Text>{pieza.tratamiento} </Text>
+                              </span>
+                            </p>
                           </div>
                         </div>
                       ))}
