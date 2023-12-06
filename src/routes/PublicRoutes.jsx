@@ -13,6 +13,7 @@ import Odontogramapage from '../pages/Odontograma/Odontogramapage';
 import RegistrarPaciente from '../components/RegistrarPaciente'
 import GestionarOdontologo from '../components/GestionarOdontologo';
 import UserCard from '../components/UserCard';
+import Bitacora from '../pages/bitacora/Bitacora';
 const PublicRoutes = () => {
   const UseAuth = useAuth();
   return (
@@ -31,6 +32,7 @@ const PublicRoutes = () => {
           <Route path="/Registrar" element={<RegistrarPaciente/>} />
           <Route path="/RegistrarOdontologo" element={<GestionarOdontologo/>} />
           <Route path="/carduser/:id" element={<UserCard/>} />
+          <Route path="/bitacora" element={<Bitacora/>} />
         </Routes>
       </BrowserRouter>
     </>

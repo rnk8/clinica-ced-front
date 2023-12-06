@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import Sidebar from './Sidebar';
+import useAuth from '../auth/useAuth';
 
 function DentalAppointmentForm() {
   const [selectedPaciente, setSelectedPaciente] = useState('');
@@ -13,6 +14,7 @@ function DentalAppointmentForm() {
   const [pacientes, setPacientes] = useState([]);
   const [odontologos, setOdontologos] = useState([]);
 
+  const UseAuth = useAuth();
   const loadPacientesOdontologos = async () => {
     try {
       const pacientesResponse = await fetch('https://clinica-ced-server2.onrender.com/api/paciente');
@@ -70,6 +72,8 @@ function DentalAppointmentForm() {
         setDate('');
         setTime('');
         setNotes('');
+        console.log(UseAuth.user)
+        UseAuth.createBitacora( UseAuth.user.email, "Escritura", "Registro Cita");
       } else {
         console.error('Error al enviar la solicitud');
       }

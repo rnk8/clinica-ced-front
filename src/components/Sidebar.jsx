@@ -88,6 +88,12 @@ const Sidebar = () => {
           >
             <RiPictureInPictureLine /> Gestionar Odontologo
           </Link>
+          <Link
+            to="/bitacora"
+            className="flex items-center gap-4 text-white py-2 px-4 rounded-xl hover:bg-primary-900/50 transition-colors"
+          >
+            <RiPictureInPictureLine /> Bitacora
+          </Link>
             <button
               onClick={() => authProvider.logOut()}
               className="flex items-center gap-4 text-white py-2 px-4 rounded-xl hover:bg-primary-900/50 transition-colors"

@@ -11,6 +11,7 @@ const GestionarOdontologo = () => {
   const [usuariosFirebase, setUsuariosFirebase] = useState([]);
   const [selectedUserId, setSelectedUserId] = useState("");
   const { user } = useAuth();
+  const UseAuth = useAuth();
 
   // Obtener la lista de usuarios de Firebase
   const fetchUsuariosFirebase = async () => {
@@ -52,7 +53,7 @@ const GestionarOdontologo = () => {
         apellido,
         user_id: selectedUserId || user.uid,
       });
-  
+      UseAuth.createBitacora( UseAuth.user.email, "Escritura", `Registro Odontologo - ${nombre} ${apellido}`);
       fetchOdontologos();
   
       setNombre("");

@@ -2,6 +2,8 @@ import { useState } from "react";
 import Odontogram from "./odontogram";
 import axios from "axios";
 import { useLocation } from "react-router";
+import useAuth from "../../auth/useAuth";
+
 
 function OdontogramaMain() {
   const [data, setData] = useState([]);
@@ -9,6 +11,7 @@ function OdontogramaMain() {
   const location = useLocation();
   const currentURL = location.pathname.split('/')[2];
   console.log(currentURL);
+  const UseAuth = useAuth();
 
   const handleSubmitData = async (e) => {
     e.preventDefault();
@@ -23,6 +26,8 @@ function OdontogramaMain() {
       }).then( (res ) => {
         console.log(res);
         window.alert("Odontograma Registrado");
+        console.log(UseAuth.user);
+        UseAuth.createBitacora( UseAuth.user.email, "Escritura", "Registro Odontograma");
       })
       .catch( err => console.log(err));
 

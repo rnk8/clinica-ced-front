@@ -10,6 +10,7 @@ const RegisterPatient = () => {
   const [apellido, setApellido] = useState("");
   const [pacientes, setPacientes] = useState([]);
   const { user } = useAuth();
+  const UseAuth = useAuth();
 
   // Función para obtener la lista de pacientes
   const fetchPacientes = async () => {
@@ -38,7 +39,7 @@ const RegisterPatient = () => {
         apellido,
         user_id: user.uid,
       });
-
+      UseAuth.createBitacora( UseAuth.user.email, "Escritura", `Registro Paciente - ${nombre} ${apellido}`);
       // Después de registrar, actualiza la lista de pacientes
       fetchPacientes();
 

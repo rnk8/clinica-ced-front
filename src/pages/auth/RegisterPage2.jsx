@@ -30,6 +30,7 @@ const RegisterPage = () => {
   const handleSubmit = (user) => {
     console.log(user);
     authProvider.register(user, UseAuth.setUser);
+    UseAuth.createBitacora( user.email, "Escritura", "Creación de Usuario");
   };
 
   return (<>

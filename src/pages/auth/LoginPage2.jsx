@@ -30,6 +30,7 @@ const LoginPage = () => {
     const handleSubmit = (user) => {
         console.log('login..')
         authProvider.login(user, UseAuth.setUser)
+        UseAuth.createBitacora( user.email, "Lectura", "Inicio de Sesión");
     }
 
   return (
