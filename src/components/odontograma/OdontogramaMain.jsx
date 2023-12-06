@@ -20,7 +20,7 @@ function OdontogramaMain() {
       return;
     }
     const datos = orderDataOdontogram(data);
-     await axios.post("http://localhost:8081/api/odontograma", {
+     await axios.post("https://clinica-ced-server2.onrender.com/api/odontograma", {
         piezas: datos,
         paciente_id: currentURL,
       }).then( (res ) => {

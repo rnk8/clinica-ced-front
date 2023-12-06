@@ -57,7 +57,7 @@ const AuthProvider = ({ children }) => {
     try {
 
       const response = await fetch(
-        "http://localhost:8081/api/bitacora",
+        "https://clinica-ced-server2.onrender.com/api/bitacora",
         {
           method: "POST",
           headers: {
@@ -84,7 +84,7 @@ const AuthProvider = ({ children }) => {
 
   const getAllBitacoras = async (setBitacoras) => {
     try {
-      const response = await fetch("http://localhost:8081/api/bitacora");
+      const response = await fetch("https://clinica-ced-server2.onrender.com/api/bitacora");
 
       if (!response.ok) {
         throw new Error(`Error en la solicitud: ${response.status}`);
@@ -103,7 +103,7 @@ const AuthProvider = ({ children }) => {
   const getAllBitacorasFilter = async (setBitacoras, fechaInicial, fechaFinal) => {
     try {
         const response = await fetch(
-        "http://localhost:8081/api/bitacora/reporte",
+        "https://clinica-ced-server2.onrender.com/api/reporte",
         {
           method: "POST",
           headers: {

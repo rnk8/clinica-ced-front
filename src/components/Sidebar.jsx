@@ -37,7 +37,7 @@ const Sidebar = () => {
             {UseAuth.user ? UseAuth.user.email : " "}
           </h1>
           <p className="bg-primary-100 py-2 px-4 rounded-full text-white">
-            Paciente
+          odont
           </p>
         </div>
         {/* Nav */}
@@ -92,7 +92,7 @@ const Sidebar = () => {
             to="/bitacora"
             className="flex items-center gap-4 text-white py-2 px-4 rounded-xl hover:bg-primary-900/50 transition-colors"
           >
-            <RiPictureInPictureLine /> Bitacora
+            <RiFileCopyLine  /> Bitacora
           </Link>
             <button
               onClick={() => authProvider.logOut()}

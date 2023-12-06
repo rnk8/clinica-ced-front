@@ -90,19 +90,7 @@ const GestionarOdontologo = () => {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700">Seleccionar Usuario</label>
-            <select
-              value={selectedUserId}
-              onChange={(e) => setSelectedUserId(e.target.value)}
-              className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-            >
-              <option value="">Seleccionar...</option>
-              {usuariosFirebase.map((usuario) => (
-                <option key={usuario.id} value={usuario.id}>
-                  {usuario.displayName || usuario.email}
-                </option>
-              ))}
-            </select>
+                      
           </div>
           <div className="mt-4">
             <button

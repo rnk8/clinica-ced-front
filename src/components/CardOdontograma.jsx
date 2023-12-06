@@ -59,7 +59,7 @@ const CardOdontograma = ({ detalle }) => {
   return (
     <Document>
       <Page size="A4" style={styles.page}>
-        <div className=" h-80 overflow-y-auto p-10  border border-gray-200 rounded-lg shadow sm:p-8 bg-blue-900">
+        <div className=" h-80 overflow-y-auto p-10  border border-gray-200 rounded-lg shadow sm:p-8 bg-slate-50-blue-900">
           <View style={styles.section}>
             <div className="flex items-center justify-between mb-4">
               <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white">

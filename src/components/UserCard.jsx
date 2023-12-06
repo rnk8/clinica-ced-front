@@ -14,7 +14,7 @@ const OdontogramaPage = () => {
   useEffect(() => {
     // Hacer la llamada a la API para obtener los detalles del odontograma
     axios
-      .get(`http://localhost:8081/api/odontograma/${currentURL}`)
+      .get(`https://clinica-ced-server2.onrender.com/api/odontograma/${currentURL}`)
       .then((response) => {
         console.log(response);
         setDetallesOdontograma(response.data.detalles);
