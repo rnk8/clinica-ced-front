@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import ReactToPrint from "react-to-print";
 import axios from "axios";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 import { useLocation } from "react-router-dom";
 import CardOdontograma from "./CardOdontograma";
-import Button from "react-bootstrap/Button";
-import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
+// ... rest of your imports
 
 const OdontogramaPage = () => {
+  const printableContentRef = useRef();
   const [detallesOdontograma, setDetallesOdontograma] = useState([]);
   const [pacientee, setPaciente] = useState("");
   const location = useLocation();
@@ -27,6 +28,7 @@ const OdontogramaPage = () => {
       });
   }, []);
 
+
   return (
     <div className="grid lg:grid-cols-4 xl:grid-cols-6 min-h-screen">
       <Sidebar />
@@ -35,11 +37,15 @@ const OdontogramaPage = () => {
         <p className="font-semibold text-2xl my-4">
           {"Paciente: " + pacientee}
         </p>
+      
         <div className="grid grid-cols-2 gap-6 w-full">
           {detallesOdontograma.map((odontograma, index) => (
             <div key={index} className="w-full">
-              <CardOdontograma key={index} detalle={odontograma} />
-            
+              <CardOdontograma
+                key={index}
+                detalle={odontograma}
+                ref={printableContentRef}
+              />
             </div>
           ))}
         </div>

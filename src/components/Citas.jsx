@@ -3,6 +3,15 @@ import Header from './Header';
 import Sidebar from './Sidebar';
 import useAuth from '../auth/useAuth';
 
+const API_BASE_URL = 'https://clinica-ced-server2.onrender.com/api';
+
+const ENDPOINTS = {
+  PACIENTES: '/paciente',
+  ODONTOLOGOS: '/odontologo',
+  CITAS: '/citas',
+  AGENDAR_CITA: '/agendar_cita',
+};
+
 function DentalAppointmentForm() {
   const [selectedPaciente, setSelectedPaciente] = useState('');
   const [selectedOdontologo, setSelectedOdontologo] = useState('');
@@ -15,33 +24,29 @@ function DentalAppointmentForm() {
   const [odontologos, setOdontologos] = useState([]);
 
   const UseAuth = useAuth();
-  const loadPacientesOdontologos = async () => {
-    try {
-      const pacientesResponse = await fetch('https://clinica-ced-server2.onrender.com/api/paciente');
-      const pacientesData = await pacientesResponse.json();
-      setPacientes(pacientesData.paciente);
 
-      const odontologosResponse = await fetch('https://clinica-ced-server2.onrender.com/api/odontologo');
-      const odontologosData = await odontologosResponse.json();
-      setOdontologos(odontologosData.odontologo);
+  const fetchData = async (endpoint, setState) => {
+    try {
+      const response = await fetch(`${API_BASE_URL}${endpoint}`);
+      const data = await response.json();
+      setState(data[endpoint.slice(1)]); // Slice para quitar el "/" al principio del endpoint
     } catch (error) {
-      console.error('Error al cargar pacientes y odontólogos:', error);
+      console.error(`Error al cargar ${endpoint}:`, error);
     }
   };
 
+  const loadPacientesOdontologos = async () => {
+    fetchData(ENDPOINTS.PACIENTES, setPacientes);
+    fetchData(ENDPOINTS.ODONTOLOGOS, setOdontologos);
+  };
+
   const loadAppointments = async () => {
-    try {
-      const response = await fetch('https://clinica-ced-server2.onrender.com/api/citas');
-      const data = await response.json();
-      setAppointments(data.citas);
-    } catch (error) {
-      console.error('Error al cargar citas:', error);
-    }
+    fetchData(ENDPOINTS.CITAS, setAppointments);
   };
 
   useEffect(() => {
     loadPacientesOdontologos();
-    loadAppointments(); // Cargar citas al montar el componente
+    loadAppointments();
   }, []);
 
   const handleSubmit = async (event) => {
@@ -56,7 +61,7 @@ function DentalAppointmentForm() {
         odontologo_id: selectedOdontologo,
       };
 
-      const response = await fetch('https://clinica-ced-server2.onrender.com/api/agendar_cita', {
+      const response = await fetch(`${API_BASE_URL}${ENDPOINTS.AGENDAR_CITA}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -72,8 +77,8 @@ function DentalAppointmentForm() {
         setDate('');
         setTime('');
         setNotes('');
-        console.log(UseAuth.user)
-        UseAuth.createBitacora( UseAuth.user.email, "Escritura", "Registro Cita");
+        console.log(UseAuth.user);
+        UseAuth.createBitacora(UseAuth.user.email, 'Escritura', 'Registro Cita');
       } else {
         console.error('Error al enviar la solicitud');
       }
@@ -82,7 +87,6 @@ function DentalAppointmentForm() {
     }
   };
 
-  // Utiliza appointments para filtrar las citas
   const citasDelPaciente = appointments.filter(
     (appointment) => appointment.PacienteId === selectedPaciente
   );
@@ -93,8 +97,7 @@ function DentalAppointmentForm() {
       <main className="col-span-1 lg:col-span-3 xl:col-span-5 bg-gray-100 p-8 h-full overflow-y-scroll">
         <Header />
         <form onSubmit={handleSubmit} className="space-y-4">
-          
-        <div>
+          <div>
             <label className="block text-sm font-medium text-gray-700">Seleccionar Paciente</label>
             <select
               value={selectedPaciente}
@@ -175,7 +178,7 @@ function DentalAppointmentForm() {
                 <tbody className="bg-white divide-y divide-gray-200">
                   {citasDelPaciente.map((appointment) => (
                     <tr key={appointment.id}>
-                      <td className="pxe-6 py-4 whitespace-nowrap">{appointment.fecha}</td>
+                      <td className="px-6 py-4 whitespace-nowrap">{appointment.fecha}</td>
                       <td className="px-6 py-4 whitespace-nowrap">{appointment.hora}</td>
                       <td className="px-6 py-4 whitespace-nowrap">{appointment.nota}</td>
                       <td className="px-6 py-4 whitespace-nowrap">{appointment.PacienteId}</td>
@@ -195,4 +198,3 @@ function DentalAppointmentForm() {
 }
 
 export default DentalAppointmentForm;
-

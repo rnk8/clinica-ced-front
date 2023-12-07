@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom'; // Asegúrate de importar BrowserRouter y Routes
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import LoginPage2 from '../pages/auth/LoginPage2';
 import RegisterPage2 from '../pages/auth/RegisterPage2';
 import Home from '../components/Home';
@@ -8,12 +8,13 @@ import Perfil from '../components/Perfil';
 import Citas from '../components/Citas';
 import useAuth from '../auth/useAuth';
 import PrivateRoute from './PrivateRoute';
-import Listapaciente from '../components/Listapaciente'
+import Listapaciente from '../components/Listapaciente';
 import Odontogramapage from '../pages/Odontograma/Odontogramapage';
-import RegistrarPaciente from '../components/RegistrarPaciente'
+import RegistrarPaciente from '../components/RegistrarPaciente';
 import GestionarOdontologo from '../components/GestionarOdontologo';
-import UserCard from '../components/UserCard';
+import UserCard from '../components/UserCard'; // Import UserCard only once
 import Bitacora from '../pages/bitacora/Bitacora';
+
 const PublicRoutes = () => {
   const UseAuth = useAuth();
   return (
