@@ -1,27 +1,18 @@
-import React, { forwardRef } from "react";
-import { Page, Text, View, Document, StyleSheet } from "@react-pdf/renderer";
+import { forwardRef } from "react";
 import ReactToPrint from "react-to-print";
 
-// Create styles
-const styles = StyleSheet.create({
-  page: {
-    flexDirection: "row",
-    backgroundColor: "#E4E4E4",
-  },
-  section: {},
-});
+
 const CardOdontograma = forwardRef(({ detalle }, ref) => {
   const today = new Date();
   const formattedDate = `${today.getDate()}-${today.getMonth() + 1}-${today.getFullYear()}`;
 
   return (
-    <Document>
-      <Page size="A4" style={styles.page} ref={ref}>
+   
+      <div >
         <div className="h-80 overflow-y-auto p-10 border border-gray-200 rounded-lg shadow sm:p-8 bg-slate-50-blue-900">
-          <View style={styles.section}>
             <div className="flex items-center justify-between mb-4">
-              <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white">
-                <Text>{"Fecha: " + formattedDate}</Text>
+              <h5 className="text-xl font-bold leading-none text-gray-900">
+              {"Fecha: " + formattedDate}
               </h5>
               <ReactToPrint
                 trigger={() => (
@@ -37,23 +28,23 @@ const CardOdontograma = forwardRef(({ detalle }, ref) => {
                 content={() => ref.current}
               />
             </div>
-          </View>
+          
           <div className="flow-root">
             <ul
               role="list"
               className="divide-y divide-gray-200 dark:divide-gray-700"
             >
-              <View style={styles.section}>
                 {detalle.map((tipo, index) => (
+
                   <li key={index} className="py-3 sm:py-4">
                     <div className="flex items-center">
                       <div className="flex-shrink-0 text-3xl">🦷</div>
                       <div className="flex-1 min-w-0 ms-4">
                         <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
-                          <Text>Diente Nro:</Text>
+                        Diente Nro:
                         </p>
                         <p className="text-gray-500 truncate dark:text-gray-400 text-md">
-                          <Text>{tipo.numero}</Text>
+                        {tipo.numero}
                         </p>
                       </div>
                       <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
@@ -62,40 +53,39 @@ const CardOdontograma = forwardRef(({ detalle }, ref) => {
                         </p>
                       </div>
                     </div>
-                    <div>
+                    <div ref={ref}>
                       {tipo.Tipo_piezas.map((pieza, index2) => (
                         <div key={index2} className="px-10 ">
                           <div className="py-2 my-2 bg-blue-100 text-center rounded-md">
                             <p className="font-medium">
-                              <Text>Pieza dental: </Text>
+                            Pieza dental: 
                               <span className="font-normal">
-                                <Text>{pieza.nombre} 🦷 </Text>
+                              {pieza.nombre} 🦷 
                               </span>
                             </p>
                             <p className="font-medium">
-                              <Text> Estado: </Text>
+                             Estado: 
                               <span className="font-normal">
-                                <Text>En tratamiento </Text>
+                              En tratamiento 
                               </span>
                             </p>
                             <p className="font-medium">
-                              <Text> Tratamiento: </Text>
+                             Tratamiento: 
                               <span className="font-normal">
-                              <Text>{pieza.tratamiento} </Text>
+                            {pieza.tratamiento} 
                               </span>
                             </p>
                           </div>
                         </div>
                       ))}
-                    </div>
+                      </div>
                     </li>
                 ))}
-              </View>
             </ul>
           </div>
         </div>
-      </Page>
-    </Document>
+      </div>
+    
   );
 });
 

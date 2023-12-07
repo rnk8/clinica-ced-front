@@ -103,7 +103,7 @@ const AuthProvider = ({ children }) => {
   const getAllBitacorasFilter = async (setBitacoras, fechaInicial, fechaFinal) => {
     try {
         const response = await fetch(
-        "https://clinica-ced-server2.onrender.com/api/reporte",
+        "https://clinica-ced-server2.onrender.com/api/bitacora/reporte",
         {
           method: "POST",
           headers: {
